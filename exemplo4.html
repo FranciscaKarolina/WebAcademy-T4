@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+
+    <body>
+        <h1>Login</h1>
+        <p>Por favor, informe seu login e senha: </p>
+        <form id="login" method="POST" action="/user/login">
+            Login: <input type="text" name="nome" id="nome"/><br/>
+            Senha: <input type="password" name="senha" id="senha"/><br/>
+            <br>
+            <input type="reset" value="Resetar dados" />
+            <input type="submit" name="submit" value="Entrar" />
+            
+            <br/>
+            <br/>
+
+            <!--Input Text-->
+            Nome: <input type="text" name="nome" value="João" /><br/>
+            <!--Input do tipo Email-->
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="email" required placeholder="seunome@dominio.com.br"><br/>
+            <!--Input Date-->
+            <label for="nascimento">Data de nascimento</label>
+            <input type="date" name="nascimento" id="nascimento"><br>
+
+            <!--Input Submit - o atributo value contém o texto do botão-->
+            <input type="submit" name="submit" value="Enviar" />
+
+            <br>
+            <br>
+
+            <!--Fieldset, radio e legend-->
+            <fieldset>
+                <legend>Selecione seu curso</legend>
+                <input type="radio" name="curso" value="cc" checked> 
+                Ciência da Computação<br>
+                <input type="radio" name="curso" value="es">
+                Engenharia de Software<br>
+                <input type="radio" name="curso" value="ec">
+                Engenharia da Computação<br>
+            </fieldset>
+
+            <br>
+            <br>
+
+            <!--Label-->
+            <fieldset>
+                <legend>Selecione seu curso</legend>
+                <input type="radio" name="curso" value="cc" id="cc"> 
+                <label for="cc">Ciência da Computação</label><br>
+                <input type="radio" name="curso" value="es" id="es">
+                <label for="es">Engenharia de Software</label><br>
+                <input type="radio" name="curso" value="ec" id="ec">
+                <label for="ec">Engenharia da Computação</label><br>
+            </fieldset>
+
+            <br>
+            <br>
+
+            <!--Textarea-->
+            <textarea name="mensagem" rows="4" cols="30">
+                Este é um texto padrão!
+            </textarea>
+
+            <br>
+            <br>
+
+            <label for="java">java</label>
+            <input type="checkbox" name="ling" id="java" value="java">
+            <label for="c">C</label>
+            <input type="checkbox" name="ling" id="c" value="c">
+            <label for="cpp">C++</label>
+            <input type="checkbox" name="ling" id="cpp" value="cpp">
+            <label for="perl">Perl</label>
+            <input type="checkbox" name="ling" id="perl" value="perl">
+            <label for="python">Python</label>
+            <input type="checkbox" name="ling" id="python" value="python">
+            <label for="java">JavaScript</label>
+            <input type="checkbox" name="ling" id="js" value="js">
+
+            <br>
+            <br>
+            
+            <!--Input Number-->
+            <label for="ano">Ano de entrada em seu curso do Icomp</label>
+            <input type="number" name="ano" min="1980" max="2020" step="1" value="2020" id="ano">
+
+            <br>
+            <br>
+
+            <!--Input file-->
+            <fieldset>
+                <legend>Submenta seu Curriculo vitae</legend>
+                <input type="file" name="curriculo">
+            </fieldset>
+
+            <br>
+            <br>
+
+            <!--Input select-->
+            <select name="area" id="area">
+                <option value="1">Banco de Dados</option>
+                <option value="2">Educação a Distância</option>
+                <option value="3">Engenharia de Software</option>
+                <option value="4">Otimização</option>
+                <option value="5">Programação para Web</option>
+                <option value="6">Recuperação de Informação</option>
+                <option value="7">Redes de Computadores</option>
+            </select>
+        </form>
+
+    </body>
+</html>
