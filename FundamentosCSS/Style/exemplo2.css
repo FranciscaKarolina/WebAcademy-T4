@@ -1,0 +1,20 @@
+.padding{
+    border: 10px double black;
+    background-color: lightgray;
+    background-clip: content-box;
+    padding: 10px 16px 6px 12px;
+    /*
+    box-shadow: 10px 5px 5px black;
+    */
+}
+img{
+    border: 4px solid black;
+    background: lightslategray;
+    margin: 4px 6px;
+}
+.box{
+    margin: 100px;
+    border: medium solid black;
+    box-shadow: 4px 4px 8px 2px gray,
+                2px 2px 4px 2px gray inset;
+}
