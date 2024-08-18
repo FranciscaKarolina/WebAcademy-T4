@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Flex-box</title>
+    
+    <style>
+        .container_2{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: start;
+            align-content: center;
+        }
+        .container{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: start;
+            align-content: center;
+            background-color: rgb(231, 91, 200);
+            padding: 4px;
+            gap: 4px;
+        }
+        div.container > div{
+            flex-grow: 1;  /* os itens vão crescer quando sobrar espaço*/
+            flex-shrink: 1; /*determina como os itens encurtam na medida que falta espaço*/
+            flex-basis: 40px; /*usar para determinar o tamanho*/
+            background-color: blueviolet;
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+        div.container > div:nth-child(2){
+            flex-grow: 4;
+            align-self: self-end;
+        }
+        div.container > div:nth-child(3){
+            flex-grow: 4;
+            align-self: self-end;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container_2">
+        <img src="img/css.png" width="80px" alt="CSS">
+        <img src="img/css.png" width="80px" alt="CSS">
+        <img src="img/css.png" width="80px" alt="CSS">
+    </div>
+
+    <div class="container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+    </div>
+    
+</body>
+</html>
