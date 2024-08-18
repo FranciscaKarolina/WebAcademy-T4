@@ -1,0 +1,16 @@
+.transb{
+    width: 200px;
+    height: 100px;
+    overflow: scroll;
+    border: medium double;
+}
+.box-elementos{
+    border: medium solid black;
+}
+span{
+    display: inline-block;
+    border: medium double black;
+    margin: 2px;
+    width: 10em;
+    height: 2em;
+}
