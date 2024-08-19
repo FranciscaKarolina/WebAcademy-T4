@@ -39,7 +39,6 @@ header a {
   text-decoration: none;
   display: block;
   padding: 0.5em 1em;
-  border-top: 1px solid #999;
 }
 
 header .title {
@@ -68,7 +67,7 @@ main {
   grid-template-rows: auto;
   grid-template-areas: 
     "card1 card2 card3"
-    "card4 card5      ";
+    "card4 card5 .";
   gap: 1em;
 }
 
