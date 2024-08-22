@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript" src="aula3.js"></script>
+
+        <h1>Instituto de Computação</h1>
+        <script>
+            let results = document.getElementById("results");  
+            let elems = document.querySelectorAll("p, img#maca");
+            results.innerHTML = "Qtd elementos: " + elems.length; 
+          </script>
+          
+   
+        <p>Como toda unidade acadêmica, o Instituto de Computação atua no ensino, pesquisa e extensão.</p>
+ 
+        <img id="limao" class="fruta" width="40px" src="img/limao.png"> 
+        <img id="maca" class="fruta" width="40px" src="img/maca.png">
+        <img id="banana" class="fruta" width="40px" src="img/banana.png"> 
+  
+        <pre id="results"></pre>
+
+    </body>
+</html>
