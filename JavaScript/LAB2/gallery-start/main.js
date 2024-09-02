@@ -9,7 +9,7 @@ const images = ['pic1.jpg', 'pic2.jpg', 'pic3.jpg', 'pic4.jpg', 'pic5.jpg'];
 
 /* Declaring the alternative text for each image file */
 const altTexts = {
-    'pic1.jpg' : 'Closeup of a human eye',
+    'pic1.jpg' : 'Olho humano',
     'pic2.jpg' : 'Rocha',
     'pic3.jpg' : 'Flores roxas',
     'pic4.jpg' : 'Desenho Egipcio',
