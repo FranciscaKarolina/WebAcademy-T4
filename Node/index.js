@@ -2,6 +2,8 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
+const PORT =process.env.PORT ?? 7878;
+
 const server = http.createServer(function(req,res){
     const directoryPath = path.join('C:', 'Users', 'queir', 'OneDrive', 'Documentos');
 
@@ -27,4 +29,4 @@ const server = http.createServer(function(req,res){
     });
 });
 
-server.listen(3333);
+server.listen(PORT);
