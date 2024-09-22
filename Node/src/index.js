@@ -1,8 +1,12 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const dotenv = require("dotenv") 
 
-const PORT =process.env.PORT ?? 7878;
+//carregar o arquivo .env
+dotenv.config({path: `.env.${process.env.NODE_ENV}`});
+
+const PORT = process.env.PORT ?? 7878;
 
 const server = http.createServer(function(req,res){
     const directoryPath = path.join('C:', 'Users', 'queir', 'OneDrive', 'Documentos');
@@ -29,4 +33,6 @@ const server = http.createServer(function(req,res){
     });
 });
 
-server.listen(PORT);
+server.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+});
