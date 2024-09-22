@@ -9,9 +9,12 @@ dotenv.config({path: `.env.${process.env.NODE_ENV}`});
 
 const PORT = process.env.PORT ?? 7878;
 
-const directoryPath = path.join('C:', 'Users', 'queir', 'OneDrive', 'Documentos');
+const directoryPath = process.argv[2];
 
 const server = http.createServer((req,res) => {
+    const filePath = path.join(directoryPath, req.url);
+
+    //Verifica se está acessando a raiz
     if(req.url === '/'){
         //Função readdir
         fs.readdir(directoryPath, (err, files) =>{
@@ -20,33 +23,32 @@ const server = http.createServer((req,res) => {
                 res.write("Erro ao ler o diretório.");
                 return res.end();
             }
-    
             // Cria a lista de links
             let fileList = '';
             files.forEach(file => {
-                fileList += createLink(file);
+                fileList += `<a href="/${file}">${file}</a><br>\n`;
             });
-    
+
             // Retorna a resposta 
-            res.writeHead(200, {'Content-Type': 'text/html'});
-            res.write(`<h1>Arquivos no diretorio:</h1>${fileList}`);
+            res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
+            res.write(`<h1>Arquivos no diretorio:</h1>${directoryPath}`);
+            res.write(fileList);
             return res.end();
         });
     }else{
-        // Exibir conteúdo do arquivo
-        const filePath = path.join(directoryPath, req.url);
-        fs.readFile(filePath, 'utf-8', (err, data) => {
-            if (err) {
-                res.writeHead(404, { 'Content-Type': 'text/html;charset=utf-8' });
+        fs.readFile(filePath, 'utf8', (err, data) =>{
+            if(err){
+                res.writeHead(404, {'Content-Type': 'text/html;charset=utf-8'});
                 res.write("Arquivo não encontrado.");
                 return res.end();
             }
-
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.write(`<pre>${data}</pre><br><a href="/">Voltar</a>`);
+            //Exibir conteudo
+            res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
+            res.write(`<a href="/">Voltar</a><br>`);
+            res.write(`<pres>${data}</pres>`);
             return res.end();
-        });   
-    }
+        })
+    } 
 });
 
 server.listen(PORT, () => {
