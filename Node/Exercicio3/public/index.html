@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lorem Ipsum Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gerador de Lorem Ipsum</h1>
+        <form id="lorem-form" action="/lorem" method="GET">
+            <label for="paragraphs">Digite o número de parágrafos:</label>
+            <input type="number" id="paragraphs" name="paragraphs" min="1" value="1" required>
+            <button type="submit">Gerar</button>
+        </form>
+        <div id="output"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
