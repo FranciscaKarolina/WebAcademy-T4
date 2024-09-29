@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão da Turma de Educação Física</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-container {
+            margin-bottom: 20px;
+        }
+        .stats {
+            margin-top: 20px;
+        }
+        .stats p {
+            font-weight: bold;
+        }
+        .alunos-list {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Gestão de Turma de Educação Física</h1>
+
+    <div class="form-container">
+        <form id="alunoForm">
+            <input type="hidden" id="id" />
+            <label for="nome">Nome Completo:</label>
+            <input type="text" id="nome" required><br><br>
+
+            <label for="idade">Idade:</label>
+            <input type="number" id="idade" required><br><br>
+
+            <label for="altura">Altura (em metros):</label>
+            <input type="number" id="altura" step="0.01" required><br><br>
+
+            <label for="peso">Peso (em kg):</label>
+            <input type="number" id="peso" required><br><br>
+
+            <button type="submit">Adicionar/Atualizar Aluno</button>
+
+            <button id="gerarAlunoBtn">Gerar Aluno Automaticamente</button>
+
+        </form>
+    </div>
+
+    <div class="alunos-list">
+        <h3>Lista de Alunos</h3>
+        <ul id="alunosList"></ul>
+    </div>
+
+    <div class="stats">
+        <h3>Estatísticas da Turma</h3>
+        <p id="numAlunos">Número de alunos: 0</p>
+        <p id="mediaIdades">Média de idades: 0</p>
+        <p id="mediaAlturas">Média de alturas: 0</p>
+        <p id="mediaPesos">Média de pesos: 0</p>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
