@@ -1,122 +1,93 @@
-class Coder {
-
-    secondLang!: string
-
+class Aluno {
     constructor(
-        public readonly name: string,
-        public music: string,
-        private age: number,
-        protected lang: string = 'Typescript'
-    ) {
-        this.name = name
-        this.music = music
-        this.age = age
-        this.lang = lang
+        private id: number,
+        private nomeCompleto: string,
+        private idade: number,
+        private altura: number,
+        private peso: number
+    ) {}
+
+    public getId(): number { return this.id; }
+    public getNomeCompleto(): string { return this.nomeCompleto; }
+    public getIdade(): number { return this.idade; }
+    public getAltura(): number { return this.altura; }
+    public getPeso(): number { return this.peso; }
+}
+
+class Turma {
+    private alunos: Aluno[] = [];
+
+    public adicionarAluno(aluno: Aluno): void {
+        this.alunos.push(aluno);
+        this.atualizarEstatisticas();
     }
 
-    public getAge() {
-        return `Hello, I'm ${this.age}`
+    public editarAluno(id: number, novoAluno: Aluno): void {
+        const index = this.alunos.findIndex(aluno => aluno.getId() === id);
+        if (index !== -1) {
+            this.alunos[index] = novoAluno;
+            this.atualizarEstatisticas();
+        }
+    }
+
+    public removerAluno(id: number): void {
+        this.alunos = this.alunos.filter(aluno => aluno.getId() !== id);
+        this.atualizarEstatisticas();
+    }
+
+    public getNumAlunos(): number {
+        return this.alunos.length;
+    }
+
+    public getMediaIdades(): number {
+        const total = this.alunos.reduce((soma, aluno) => soma + aluno.getIdade(), 0);
+        return this.alunos.length ? total / this.alunos.length : 0;
+    }
+
+    public getMediaAlturas(): number {
+        const total = this.alunos.reduce((soma, aluno) => soma + aluno.getAltura(), 0);
+        return this.alunos.length ? total / this.alunos.length : 0;
+    }
+
+    public getMediaPesos(): number {
+        const total = this.alunos.reduce((soma, aluno) => soma + aluno.getPeso(), 0);
+        return this.alunos.length ? total / this.alunos.length : 0;
+    }
+
+    public atualizarEstatisticas(): void {
+        document.getElementById('numAlunos')!.textContent = `Número de alunos: ${this.getNumAlunos()}`;
+        document.getElementById('mediaIdades')!.textContent = `Média de idades: ${this.getMediaIdades().toFixed(2)}`;
+        document.getElementById('mediaAlturas')!.textContent = `Média de alturas: ${this.getMediaAlturas().toFixed(2)}`;
+        document.getElementById('mediaPesos')!.textContent = `Média de pesos: ${this.getMediaPesos().toFixed(2)}`;
+    }
+
+    public listarAlunos(): void {
+        const alunosList = document.getElementById('alunosList')!;
+        alunosList.innerHTML = '';
+        this.alunos.forEach(aluno => {
+            const li = document.createElement('li');
+            li.textContent = `${aluno.getNomeCompleto()} - Idade: ${aluno.getIdade()}, Altura: ${aluno.getAltura()}m, Peso: ${aluno.getPeso()}kg`;
+            alunosList.appendChild(li);
+        });
     }
 }
 
-const Dave = new Coder('Dave', 'Rock', 42)
-console.log(Dave.getAge())
-// console.log(Dave.age)
-// console.log(Dave.lang)
+const turma = new Turma();
+let alunoId = 1;
 
-class WebDev extends Coder {
-    constructor(
-        public computer: string,
-        name: string,
-        music: string,
-        age: number,
-    ) {
-        super(name, music, age)
-        this.computer = computer
-    }
+document.getElementById('alunoForm')!.addEventListener('submit', function (event) {
+    event.preventDefault();
 
-    public getLang() {
-        return `I write ${this.lang}`
-    }
-}
+    const nome = (document.getElementById('nome') as HTMLInputElement).value;
+    const idade = +(document.getElementById('idade') as HTMLInputElement).value;
+    const altura = +(document.getElementById('altura') as HTMLInputElement).value;
+    const peso = +(document.getElementById('peso') as HTMLInputElement).value;
 
-const Sara = new WebDev('Mac', 'Sara', 'Lofi', 25)
-console.log(Sara.getLang())
-// console.log(Sara.age)
-// console.log(Sara.lang)
-/////////////////////////////////////
+    const aluno = new Aluno(alunoId++, nome, idade, altura, peso);
+    turma.adicionarAluno(aluno);
 
-interface Musician {
-    name: string,
-    instrument: string,
-    play(action: string): string
-}
+    turma.listarAlunos();
+    turma.atualizarEstatisticas();
 
-class Guitarist implements Musician {
-    name: string
-    instrument: string
-
-    constructor(name: string, instrument: string) {
-        this.name = name
-        this.instrument = instrument
-    }
-
-    play(action: string) {
-        return `${this.name} ${action} the ${this.instrument}`
-    }
-}
-
-const Page = new Guitarist('Jimmy', 'guitar')
-console.log(Page.play('strums'))
-//////////////////////////////////////
-
-class Peeps {
-    static count: number = 0
-
-    static getCount(): number {
-        return Peeps.count
-    }
-
-    public id: number
-
-    constructor(public name: string) {
-        this.name = name
-        this.id = ++Peeps.count
-    }
-}
-
-const John = new Peeps('John')
-const Steve = new Peeps('Steve')
-const Amy = new Peeps('Amy')
-
-console.log(Amy.id)
-console.log(Steve.id)
-console.log(John.id)
-console.log(Peeps.count)
-//////////////////////////////////
-
-class Bands {
-    private dataState: string[]
-
-    constructor() {
-        this.dataState = []
-    }
-
-    public get data(): string[] {
-        return this.dataState
-    }
-
-    public set data(value: string[]) {
-        if (Array.isArray(value) && value.every(el => typeof el === 'string')) {
-            this.dataState = value
-            return
-        } else throw new Error('Param is not an array of strings')
-    }
-}
-
-const MyBands = new Bands()
-MyBands.data = ['Neil Young', 'Led Zep']
-console.log(MyBands.data)
-MyBands.data = [...MyBands.data, 'ZZ Top']
-console.log(MyBands.data)
-MyBands.data = ['Van Halen', 5150] // must be string data
+    (document.getElementById('alunoForm') as HTMLFormElement).reset();
+});
